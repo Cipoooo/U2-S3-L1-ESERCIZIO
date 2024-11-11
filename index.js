@@ -12,10 +12,10 @@ class User {
    static ageDifference(User1,User2){
    
    if( User1.age > User2.age){
-    return console.log(User1.firstName + " piu grande di"+ + User2.firstName)
+    return User1.firstName +" piu grande di " + User2.firstName
    }
    else{
-    return console.log(User2.firstName + "piu grande di" + User1.firstName)
+    return User2.firstName + " piu grande di " + User1.firstName
    }
 
    }
@@ -28,32 +28,58 @@ console.log(User.ageDifference(User1,User2))
 
 //ESERCIZIO 2
 
-let inputPetname = document.getElementById('petname').value
-console.log(inputPetname)
-let inputOwnerName = document.getElementById('ownerName').value
-let inputSpecies = document.getElementById('species').value
-let inputBreed = document.getElementById('breed').value
+const petname = document.getElementById("petname")
+/*const inputPetname = inputName.addEventListener("input",()=>{
+    console.log(inputName.value)
+})*/
+const ownerName = document.getElementById("ownerName")
+/*const  inputOwnerName = inputOwner.addEventListener('input',()=>{
+    console.log(inputOwner.value)
+})*/
+const species = document.getElementById("species")
+/*const inputSpecies = inputS.addEventListener("input",()=>{
+    console.log(inputS.value)
+})*/
+const breed = document.getElementById("breed")
+/*const inputBreed = inputB.addEventListener("input",()=>{
+    console.log(inputB.value)
+})*/
 
 
-    class Pet{
-
-        constructor(inputPetname,inputOwnerName,inputSpecies,inputBreed){
-            this.petname = inputPetname;
-            this.ownerName = inputOwnerName;
-            this.species = inputSpecies;
-            this.breed = inputBreed;
-    
-        }
-       
-        sameOwner(petToCompare){
-            return this.ownerName === petToCompare.ownerName ?  `${this.ownerName} è lo stesso padrone di ${petToCompare.petname} e ${this.petname}`:  `${petToCompare.ownerName} ha un solo animale domestico`;
-        }
-    
+class Pet{
+    constructor(petname,ownerName,species,breed){
+        this.petname = petname;
+        this.ownerName = ownerName;
+        this.species = species;
+        this.breed = breed;
+    }
+    sameOwner(petToCompare){
+        return this.ownerName.value === petToCompare.ownerName.value ?  `${this.ownerName.value} è lo stesso padrone di ${petToCompare.petname.value} e ${this.petname}`:  `${petToCompare.ownerName} ha un solo animale domestico`;
     }
     
+}
+const pets = []
+function updateList(){
+    const petList = document.getElementById('petlist')
+    petList.innerHTML = ""
+    pets.forEach((pet,index)=>{
+        const listItem = document.createElement('li');
+        listItem.textContent =  `Nome : ${pet.petname}, Proprietario : ${pet.ownerName}, Specie : ${pet.species}, Razza : ${pet.breed} `
+        petList.appendChild(listItem)
+    })
+}
+document.getElementsByTagName('form')[0].addEventListener("submit", function(event){
+    event.preventDefault();
+})
+document.getElementById('create').addEventListener("click",()=>{
+    const Pet1 = new Pet(petname.value,ownerName.value,species.value,breed.value);
+    console.log(Pet1)
+    pets.push(Pet1);
+    updateList();
+    Pet1.sameOwner();
 
-const Pet1 = new Pet(inputPetname,inputOwnerName,inputSpecies,inputBreed)
-console.log(Pet1)
+document.getElementsByTagName('form')[0].reset()
+})
 
 
 /*class Pet{
@@ -72,7 +98,7 @@ console.log(Pet1)
     
 }
     
-*const Pet1 = new Pet("choppy","cipo","cane","bastarda");
+const Pet1 = new Pet("choppy","cipo","cane","bastarda");
 const Pet2 = new Pet("tombola", "cipo","cane","pastore tedesco");
 const Pet3 = new Pet("boh","guglielmino","pesce","rosso")
 

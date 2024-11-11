@@ -5,24 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    body{
+        background-color: black;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    input,button{
+        margin: 20px;
+        padding: 10px;
+        background-color: aqua;
+        border-radius: 50px;
+        color: black;
+        box-shadow: 0 0 1em white;
+    }
+    button:hover{
+        font-size: 1.3rem;
+    }
+    ul{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
 <body>
     <h1>U2 S3 L1 ESERCIZIO </h1>
     <br>
     <form>
         <label for="petname">Name</label>
-        <input type="text" placeholder="Scrivi qui il testo" id="petname">
+        <input type="text" placeholder="Scrivi qui il testo" id="petname" required>
         <br>
         <label for="ownerName">Owner</label>
-        <input type="text" placeholder="Scrivi qui il testo" id="ownerName">
+        <input type="text" placeholder="Scrivi qui il testo" id="ownerName" required>
         <br>
         <label for="species">Species</label>
-        <input type="text" placeholder="Scrivi qui il testo" id="species">
+        <input type="text" placeholder="Scrivi qui il testo" id="species" required>
         <br>
         <label for="breed">Breed</label>
-        <input type="text" placeholder="Scrivi qui il testo" id="breed">
-        <br>
-        <button type="button" id="create">create</button>
+        <input type="text" placeholder="Scrivi qui il testo" id="breed" requireds>
+        <button type="submit" id="create">create</button>
     </form>
+    <ul id="petlist">
+   
+    </ul>
 
     <script src="index.js"></script>
 </body>
